@@ -1,25 +1,30 @@
 package ru.atom;
 
+import jdk.jshell.execution.Util;
 import org.junit.Test;
 
+import static java.lang.Long.sum;
+import static jdk.jshell.execution.Util.*;
+import static jdk.nashorn.internal.objects.NativeMath.max;
 import static junit.framework.Assert.assertEquals;
 
 
 public class UtilTest {
-    
+
     @Test
     public void max0() throws Exception {
-        assertEquals(42, Util.max(new int[]{42}));
+        assertEquals(42, max(new int[]{42}));
     }
-    
-    @Test
+
+
+      @Test
     public void max1() throws Exception {
-        assertEquals(3, Util.max(new int[]{1, 2, 3}));
+        assertEquals(3, max(new int[]{1, 2, 3}));
     }
     
     @Test
     public void max2() throws Exception {
-        assertEquals(2, Util.max(new int[]{2, 2, 0}));
+        assertEquals(2, max(new int[]{2, 2, 0}));
     }
     
     @Test
@@ -38,22 +43,22 @@ public class UtilTest {
             3416, 2494, 3757, 341, 2822, 4187, 2021, 3823, 3751, 2500, 2109, 4262, 4282, 729, 2893,
             683, 4487, 1150, 2162, 194, 1825, 1100, 1165, 617, 3033, 3589, 966, 2071, 2616, 2958,
             997, 3760, 3312, 4577, 988, 3325, 472, 367, 4108};
-        assertEquals(4913, Util.max(values));
+        assertEquals(4913, max(values));
     }
     
     @Test
     public void sum0() throws Exception {
-        assertEquals(42L, Util.sum(new int[] {42}));
+        assertEquals(42L, sum(new int[] {42}));
     }
-    
+
     @Test
     public void sum1() throws Exception {
-        assertEquals(2L, Util.sum(new int[]{1, -2, 3}));
+        assertEquals(2L, sum(new int[]{1, -2, 3}));
     }
     
     @Test
     public void sum2() throws Exception {
-        assertEquals(-2L, Util.sum(new int[]{-1, 0, -1}));
+        assertEquals(-2L, sum(new int[]{-1, 0, -1}));
     }
     
     @Test
@@ -224,6 +229,6 @@ public class UtilTest {
             230403624, 2089178816, -2031848796, -434079731, 282818750, 1283007243, -2133152874,
             1414327400, 815984940, 495461839, -107851191, -1472540960, -264932259, -41121395};
 
-        assertEquals(-53_391_415_378L,Util.sum(values));
+        assertEquals(-53_391_415_378L, sum(values));
     }
 }
