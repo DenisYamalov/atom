@@ -6,6 +6,19 @@ package ru.atom.geometry;
 public class Point /* super class and interfaces here if necessary */ {
     // fields
     // and methods
+    public int x;
+    public int y;
+    class createPoint extends Point {
+        public int x;
+        public int y;
+
+        public createPoint(int x, int y) {
+            this.x=x;
+            this.y=y;
+        }
+    }
+
+
 
     /**
      * @param o - other object to check equality with
