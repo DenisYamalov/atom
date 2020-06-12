@@ -29,7 +29,7 @@ public final class Geometry {
      * 2D point
      * @return new Point
      */
-    public static Collider createPoint(int x, int y) {
-        throw new UnsupportedOperationException();
+    public static Collider createPoint(int x, int y) throws PointPointCollision {
+        throw new PointPointCollision();
     }
 }
