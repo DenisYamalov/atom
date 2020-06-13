@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+/*
 public class ReadFromFile {
     BufferedReader reader = new BufferedReader(new FileReader("dictionary.txt"));
     String line = reader.readLine();
@@ -22,4 +23,4 @@ public class ReadFromFile {
 
     public ReadFromFile() throws IOException {
     }
-}
+}*/
