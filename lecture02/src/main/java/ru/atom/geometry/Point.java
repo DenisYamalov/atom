@@ -2,33 +2,49 @@ package ru.atom.geometry;
 /**
  * Template class for
  */
-public class Point /* super class and interfaces here if necessary */ {
+public class Point implements Collider /* super class and interfaces here if necessary */ {
     // fields
     // and methods
-    public int x;
-    public int y;
+    private int X;
+    private int Y;
+
+    public int getX(){
+        return X;
+    }
+    public void setX(int x) {
+        X=x;
+    }
+    public int getY() {
+        return Y;
+    }
+
+    public void setY(int y) {
+        Y = y;
+    }
   public Point(int x, int y) {
-          this.x=x;
-          this.y=y;
+          X=x;
+          Y=y;
           }
-          public Point(){};
     /**
-     * @param obj - other object to check equality with
+     * @param o - other object to check equality with
      * @return true if two points are equal and not null.
      */
     @Override
-    public boolean equals(Object obj) {
-        Point point = (Point) obj;
-        //return x == point.x && y == point.y;
-        if (this.x == point.x && this.y == point.y) return true;
-        if (getClass() != point.getClass()) return false;
-        /*
-         cast from Object to Point
-        Point point = (Point) obj;
-        */
-        return x == point.x && y == point.y;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        // cast from Object to Point
+        Point point = (Point) o;
 
         // your code here
+        return (point.X == this.X) && (point.Y == this.Y);
     }
-          //throw new PointCollision();
+    @Override
+    public boolean isColliding(Collider other) {
+        if (other.equals(this)) {
+            return true;
+        }
+        return false;
+    };
 };
