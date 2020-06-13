@@ -2,7 +2,7 @@ package ru.atom.geometry;
 /**
  * Template class for
  */
-public abstract class Point /* super class and interfaces here if necessary */ {
+public class Point /* super class and interfaces here if necessary */ {
     // fields
     // and methods
     public int x;
@@ -22,7 +22,6 @@ public abstract class Point /* super class and interfaces here if necessary */ {
         //return x == point.x && y == point.y;
         if (this.x == point.x && this.y == point.y) return true;
         if (getClass() != point.getClass()) return false;
-
         /*
          cast from Object to Point
         Point point = (Point) obj;
@@ -32,8 +31,4 @@ public abstract class Point /* super class and interfaces here if necessary */ {
         // your code here
     }
           //throw new PointCollision();
-
-
-
-
 };
