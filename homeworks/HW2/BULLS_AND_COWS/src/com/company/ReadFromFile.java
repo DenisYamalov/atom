@@ -6,8 +6,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class ReadFromFile {
-
-    try {
         BufferedReader reader = new BufferedReader(new FileReader("dictionary.txt"));
         String line = reader.readLine();
         List<String> words = new ArrayList<String>();
@@ -21,8 +19,7 @@ public class ReadFromFile {
 
         Random rand = new Random(System.currentTimeMillis());
         String randomWord = words.get(rand.nextInt(words.size()));
-    }
-    catch (Exception e) {
-        // Handle this
-    }
+
+
 }
+

@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by a.pomosov on 07/03/2018.
@@ -23,4 +24,7 @@ public class ResourceReader {
         }
         return lines;
     }
+/*    Random rand = new Random(System.currentTimeMillis());
+    String randomWord = words.get(rand.nextInt(words.size()));
+*/
 }
