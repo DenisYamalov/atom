@@ -1,3 +1,21 @@
+package com.company;
+
+/*STEP 1: START
+        STEP 2: SET vCount =0, cCount =0
+        STEP 3: DEFINE string str = "This is a really simple sentence".
+        STEP 4: CONVERT str to lowercase
+        STEP 5: SET i =0.
+        STEP 6: REPEAT STEP 6 to STEP 8 UNTIL i<str.length()
+        STEP 7: IF any character of str matches with any vowel then
+        vCount = vCount + 1.
+        STEP 8: IF any character excepting vowels lies BETWEEN a and z then
+        cCount = cCount =+1.
+        STEP 9: i = i + 1
+        STEP 10: PRINT vCount.
+        STEP 11: PRINT cCount.
+        STEP 12: END
+        */
+
 public class CountVowelConsonant {
     public static void main(String[] args) {
 
@@ -5,7 +23,7 @@ public class CountVowelConsonant {
         int vCount = 0, cCount = 0;
 
         //Declare a string
-        String str = "abayah";
+        String str = "Denis";
 
         //Converting entire string to lower case to reduce the comparisons
         str = str.toLowerCase();
