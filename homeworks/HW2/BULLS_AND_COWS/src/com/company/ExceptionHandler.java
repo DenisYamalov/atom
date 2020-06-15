@@ -7,7 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ExceptionHandler {
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ru.atom.exception.ExceptionHandler.class);
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(com.company.ExceptionHandler.class);
 
 
     public static void simpleHandle() {
