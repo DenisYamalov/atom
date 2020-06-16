@@ -9,7 +9,7 @@ import java.io.IOException;
 public class ExceptionHandler {
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ru.Bulls.ExceptionHandler.class);
 
-
+/*
     public static void simpleHandle() {
         try {
             // some statements here
@@ -41,7 +41,7 @@ public class ExceptionHandler {
         } catch (Throwable th) {
             return th.getMessage();
         }
-    }
+    }*/
 
     public static String readOneLineFromFile(String filename) {
         File file = new File(filename);
