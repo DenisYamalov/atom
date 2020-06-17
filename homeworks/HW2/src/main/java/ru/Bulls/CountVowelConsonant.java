@@ -4,19 +4,37 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
-public class CountVowelConsonant {
-    int cCount;
-    int bCount;
+public class CountVowelConsonant  {
 
-    public void main(String[] args) throws IOException {
+    Random rand = new Random(System.currentTimeMillis());
+    //setting source file
+    List A = ResourceReader.readFromResource("dictionary.txt");
+    //choose random word
+    String randomWord = (String) A.get(rand.nextInt(A.size()));
+
+    public CountVowelConsonant() throws IOException {
+    }
+//getter of random word
+    public String getRandomWord() {
+        return randomWord;
+    }
+
+    public String getUserWord() {
+        return userWord;
+    }
+
+    public void setUserWord(String userWord) {
+        this.userWord = userWord;
+        }
+
+    String userWord;
+
+    public void main(String[] args) {
+
 
         //Counter variable to store the count of vowels and consonant
         int cCount = 0, bCount = 0;
 
-        Random rand = new Random(System.currentTimeMillis());
-        List A = ResourceReader.readFromResource("dictionary.txt");
-        //Declare a string
-        String randomWord = (String) A.get(rand.nextInt(A.size()));
 
         //Converting entire string to lower case to reduce the comparisons
         randomWord = randomWord.toLowerCase();
@@ -33,11 +51,5 @@ public class CountVowelConsonant {
                 bCount++;
             }
         }
-        System.out.println("Number of Cows: " + cCount);
-        System.out.println("Number of Bulls: " + bCount);
-        System.out.println("Word is: " + randomWord);
-
-        /*return randomWord.length();*/
     }
-
 }

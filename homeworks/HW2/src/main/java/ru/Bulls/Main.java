@@ -7,12 +7,19 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+        //setting file
         List A = ResourceReader.readFromResource("dictionary.txt");
+        //getting random word
+        String randomWord = new CountVowelConsonant().getRandomWord();
+
         System.out.println("Welcome to Bulls and Cows game!");
-        System.out.println("I offered a " + "" + "-letter word, your guess?");
-        Scanner userword = new Scanner(System.in);
-        System.out.println(userword.nextLine());
-        String randomWord ((S) new CountVowelConsonant);
+        System.out.println("I offered a " + randomWord.length() + "-letter word, your guess?");
+        //getting user word
+        Scanner userWordInput = new Scanner(System.in);
+        String userWord = userWordInput.next();
+        new CountVowelConsonant().setUserWord(userWord);
+        System.out.println(userWord);
+        System.out.println(randomWord);
 
 
 
