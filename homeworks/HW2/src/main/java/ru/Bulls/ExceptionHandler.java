@@ -44,6 +44,7 @@ public class ExceptionHandler {
     }*/
 
     public static String readOneLineFromFile(String filename) {
+        filename = "dictionary.txt";
         File file = new File(filename);
         BufferedReader bufferedReader = null;
         try {
@@ -71,6 +72,7 @@ public class ExceptionHandler {
      * @See {@link AutoCloseable}
      */
     public static String readOneLineFromFile_TheNewWay(String filename) {
+        filename = "dictionary.txt";
         File file = new File(filename);
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             return bufferedReader.readLine();
