@@ -14,7 +14,7 @@ public class Counter {
     public int get1bCount() {
         return bCount;
     }
-@Override
+
     public Counter (/*String userWord, String randomWord*/) throws IOException {
         this.userWord = userWord;
         this.randomWord = randomWord;
