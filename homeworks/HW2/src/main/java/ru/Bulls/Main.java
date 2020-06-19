@@ -19,8 +19,10 @@ public class Main {
         Scanner userWordInput = new Scanner(System.in);
         String userWord = userWordInput.next();
         new Words().setUserWord(userWord);
-        int cCount = new Counter().getsCount();
-        System.out.println(cCount);
+        Counter counter = new Counter();
+        counter.main();
+        /*int cCount = new Counter().getsCount();
+        System.out.println(cCount);*/
         /*int cCount = new Words().getsCount();
         int bCount = new Words().get1bCount();
         System.out.println(cCount);
