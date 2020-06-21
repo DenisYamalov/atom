@@ -22,14 +22,14 @@ public class Words {
         return randomWord;
     }
 
-    String userWord;
-
-    public String getUserWord() {
-        return userWord;
-    }
+    public String userWord;
 
     public void setUserWord(String userWord) {
         this.userWord = userWord;
+    }
+
+    public String getUserWord() {
+        return userWord;
     }
 
 }
