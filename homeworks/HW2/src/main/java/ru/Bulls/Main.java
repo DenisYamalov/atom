@@ -28,7 +28,10 @@ public class Main {
             // 10 attempts
             for (int j = 0; j < 10; j++) {
                 String userWord = userWordInput.next();
-
+                while (userWord.length() != randomWord.length()){
+                    System.out.println("Enter " + randomWord.length() + "-letter word");
+                    userWord = userWordInput.next();
+                }
                 if (userWord.equals(randomWord)) {
                     System.out.println("You won!");
                     System.out.println("Wanna play again? Y/N");
@@ -42,16 +45,15 @@ public class Main {
                     for (int n = 0; n < userWord.length(); n++) {
                         for (int i = 0; i < randomWord.length(); i++) {
                             if (userWord.charAt(n) == randomWord.charAt(i)) {
-                                //Checks whether a character is a vowel
-                                if (randomWord.charAt(i) == 'a' || randomWord.charAt(i) == 'e' || randomWord.charAt(i) == 'i'
-                                        || randomWord.charAt(i) == 'o' || randomWord.charAt(i) == 'u') {
-                                    //Increments the vowel counter
-                                    cCount++;
-                                }
-                                //Checks whether a character is a consonant
-                                else if (randomWord.charAt(i) >= 'a' && randomWord.charAt(i) <= 'z') {
-                                    //Increments the consonant counter
+                                //Checks whether a character's position is equal
+                                if (i == n) {
+                                    //Increments the bulls counter
                                     bCount++;
+                                }
+                                //Checks whether a character's  position not equal
+                                else if (i != n) {
+                                    //Increments the consonant counter
+                                    cCount++;
                                 }
                             }
                         }
