@@ -49,6 +49,7 @@ public class ChatClient {
                 .post(RequestBody.create(mediaType, ""))
                 .post(RequestBody.create(mediaType1, ""))
                 .url(PROTOCOL + HOST + PORT + "/chat/say?name=" + name + "&msg=" + msg)
+                .addHeader("host",HOST + PORT + name)
                 .build();
 
         return client.newCall(request).execute();

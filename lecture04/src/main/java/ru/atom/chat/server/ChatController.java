@@ -77,11 +77,14 @@ public class ChatController {
     @RequestMapping(
             path = "say",
             method = RequestMethod.POST,
+            produces = MediaType.TEXT_PLAIN_VALUE,
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> say(@RequestParam("name") String name, @RequestParam("msg") String msg) {
+        String responseBody = String.join("\n", messages.stream().sorted().collect(Collectors.toList()));
         messages.add("[" + name + "]" + ":" + msg);
-        return ResponseEntity.ok().build();
+        ResponseEntity.ok().build();
+        return ResponseEntity.ok(responseBody);
     }
 
 
