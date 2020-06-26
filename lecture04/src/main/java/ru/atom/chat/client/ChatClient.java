@@ -44,12 +44,12 @@ public class ChatClient {
     }*/
     public static Response say(String name,String msg) throws IOException {
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
-        MediaType mediaType1 = MediaType.parse(msg);
+        /*MediaType mediaType1 = MediaType.parse(msg);*/
         Request request = new Request.Builder()
                 .post(RequestBody.create(mediaType, ""))
-                .post(RequestBody.create(mediaType1, ""))
+                /*.post(RequestBody.create(mediaType1, ""))*/
                 .url(PROTOCOL + HOST + PORT + "/chat/say?name=" + name + "&msg=" + msg)
-                .addHeader("host",HOST + PORT + name)
+                /*.addHeader("host",HOST + PORT + name)*/
                 .build();
 
         return client.newCall(request).execute();
