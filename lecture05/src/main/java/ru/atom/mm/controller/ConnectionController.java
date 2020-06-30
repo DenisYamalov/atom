@@ -57,8 +57,10 @@ public class ConnectionController {
             path = "list",
             method = RequestMethod.GET,
             produces = MediaType.TEXT_PLAIN_VALUE)
+    @ResponseStatus(HttpStatus.OK)
         public String list() {
-        throw new UnsupportedOperationException();
+        log.info("Games list request");
+        return connectionQueue.getQueue().toString();
     }
 
 
