@@ -16,17 +16,20 @@ import static ru.atom.mm.model.GameSession.PLAYERS_IN_GAME;
 public class MatchMakerApp {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(MatchMakerApp.class, args);
-        ConnectionQueue connectionQueue = new ConnectionQueue();
+        /*ConnectionQueue connectionQueue = new ConnectionQueue();
+
         boolean isTrue = true;
         while (isTrue = true) {
             for (int i= 0; i < PLAYERS_IN_GAME ; i++){
                 connectionQueue.getQueue().poll();
+                Connection [i]  = connectionQueue.getQueue().poll();
 
                 if (i == PLAYERS_IN_GAME){
-                    GameSession newGame = new GameSession();
+                    GameSession newGame = new GameSession(Connection);
                     i = 0;
+                    connectionQueue.getQueue().clear();
                 }
             }
-        }
+        }*/
     }
 }
