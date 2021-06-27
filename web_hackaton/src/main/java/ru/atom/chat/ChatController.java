@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import javax.annotation.PostConstruct;
+import java.io.*;
+import java.util.Date;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -25,6 +28,17 @@ public class ChatController {
     private Queue<String> messages = new ConcurrentLinkedQueue<>();
     private Map<String, String> usersOnline = new ConcurrentHashMap<>();
 
+    @PostConstruct
+    public void ReadHystory()
+            throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader("f:/Denis/Documents/GitHub/atom/web_hackaton/src/main/resources/static/hystory.txt"));
+        String c;
+        while ((c= reader.readLine())!=null) {
+            messages.add(c);
+            }
+        reader.close();
+    }
+
     /**
      * curl -X POST -i localhost:8080/chat/login -d "name=I_AM_STUPID"
      */
@@ -33,7 +47,7 @@ public class ChatController {
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> login(@RequestParam("name") String name) {
+    public ResponseEntity<String> login(@RequestParam("name") String name) throws IOException {
         if (name.length() < 1) {
             return ResponseEntity.badRequest().body("Too short name, sorry :(");
         }
@@ -44,7 +58,8 @@ public class ChatController {
             return ResponseEntity.badRequest().body("Already logged in:(");
         }
         usersOnline.put(name, name);
-        messages.add("[" + name + "] logged in");
+        messages.add("<html><font color=\"red\">["+new Date() + "]</font></html>"+"<html><font color=\"green\">["+"[" + name + "]</font></html>" + " logged in");
+        SaveHystory();
         return ResponseEntity.ok().build();
     }
 
@@ -54,7 +69,7 @@ public class ChatController {
     @RequestMapping(
             path = "chat",
             method = RequestMethod.GET,
-            produces = MediaType.TEXT_PLAIN_VALUE)
+            produces = MediaType.TEXT_HTML_VALUE)
     public ResponseEntity<String> chat() {
         return new ResponseEntity<>(messages.stream()
                 .map(Object::toString)
@@ -70,7 +85,8 @@ public class ChatController {
             method = RequestMethod.GET,
             produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity online() {
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);//TODO
+        String responseBody = String.join("\n", usersOnline.keySet().stream().sorted().collect(Collectors.toList()));
+        return ResponseEntity.ok(responseBody);
     }
 
     /**
@@ -81,8 +97,11 @@ public class ChatController {
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity logout(@RequestParam("name") String name) {
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);//TODO
+    public ResponseEntity logout(@RequestParam("name") String name) throws IOException {
+        usersOnline.remove(name,name);
+        messages.add("<html><font color=\"red\">[" + new Date() + "]</font></html>"+"<html><font color=\"green\">[" + name + "]</font></html> logged out");
+        SaveHystory();
+        return ResponseEntity.ok().build();
     }
 
 
@@ -94,7 +113,23 @@ public class ChatController {
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity say(@RequestParam("name") String name, @RequestParam("msg") String msg) {
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);//TODO
+    public ResponseEntity say(@RequestParam("name") String name, @RequestParam("msg") String msg) throws IOException {
+        if (msg.contains("http")) {
+            msg
+                    = "<html>href=\""   + msg + "\"</html>" + msg;
+        }
+        messages.add("<html><font color=\"red\">[" + new Date() + "]</font></html>"+"<html><font color=\"green\">[" + name + "]</font></html> " + msg);
+        SaveHystory();
+        return ResponseEntity.ok().build();
+    }
+    public void SaveHystory()
+
+            throws IOException {
+             BufferedWriter writer = new BufferedWriter(new FileWriter("f:/Denis/Documents/GitHub/atom/web_hackaton/src/main/resources/static/hystory.txt"));
+        /*writer.write(messages.toString());*/
+        writer.write(messages.stream()
+                .map(Object::toString)
+                .collect(Collectors.joining("\n")));
+        writer.close();
     }
 }
