@@ -6,6 +6,7 @@ import org.junit.Test;
 import ru.atom.model.Message;
 import ru.atom.model.User;
 
+import java.util.Date;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
@@ -14,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by sergey on 3/25/17.
  */
-@Ignore
+/*@Ignore*/
 public class MessageDaoTest {
     private MessageDao messageDao;
     private String msg ;
@@ -27,8 +28,9 @@ public class MessageDaoTest {
         msg = "Hello World " + new Random().nextInt(999999);
         messagesBeforeTest = messageDao.getAll().size();
         message = new Message()
-                .setUser(new User().setId(7))
-                .setValue(msg);
+                .setUser(new User().setId(1).setLogin("Lolita"))
+                .setValue(msg)
+                .setTimestamp(new Date());
 
         messageDao.insert(message);
     }

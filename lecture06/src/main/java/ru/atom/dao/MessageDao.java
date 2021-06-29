@@ -24,7 +24,7 @@ public class MessageDao implements Dao<Message> {
                     "from chat.message as m " +
                     "join chat.user as u " +
                     "  on m.user = u.id " +
-                    "order by m.time";
+                    "order by m.time;";
 
     private static final String INSERT_MESSAGE_TEMPLATE =
             "insert into chat.message (\"user\", time, value) " +
