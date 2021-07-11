@@ -4,11 +4,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.atom.lecture07.server.model.User;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
@@ -44,5 +42,15 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> findAll() {
         return em.createQuery("Select t from " + User.class.getSimpleName() + " t").getResultList();
+    }
+
+    @Override
+    public void delete (String login){
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaDelete<User> criteriaDelete = builder.createCriteriaDelete(User.class);
+        Root<User> userRoot = criteriaDelete.from(User.class);
+        criteriaDelete.where(builder.equal(userRoot.get("login"),login));
+        Query query = em.createQuery(criteriaDelete);
+        query.executeUpdate();
     }
 }

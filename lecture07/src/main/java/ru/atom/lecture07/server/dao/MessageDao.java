@@ -8,7 +8,7 @@ import java.util.List;
 public interface MessageDao {
 /*    Message getMessageByUser(String login, String message);*/
 
-    void save(Message message);
+    void save(String login, String message);
 
     List<Message> findAll();
 }

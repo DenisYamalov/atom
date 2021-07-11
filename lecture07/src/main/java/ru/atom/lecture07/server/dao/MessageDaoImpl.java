@@ -1,6 +1,7 @@
 package ru.atom.lecture07.server.dao;
 
 import ru.atom.lecture07.server.model.Message;
+import ru.atom.lecture07.server.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -15,25 +16,13 @@ public class MessageDaoImpl implements MessageDao {
     @PersistenceContext
     private EntityManager em;
 
-   /* @Override
-    public Message getMessageByUser(String login, String message) {
-        CriteriaBuilder builder = em.getCriteriaBuilder();
-        CriteriaQuery<Message> criteria = builder.createQuery(Message.class);
-        Root<Message> from = criteria.from(Message.class);
-        criteria.select(from);
-        criteria.where(builder.equal(from.get("login"), login));
-        TypedQuery<Message> typed = em.createQuery(criteria);
-        Message message;
-        try {
-            message = typed.getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        }
-        return message;
-    }*/
 
     @Override
-    public void save(Message message) {
+    public void save(String login, String msg ) {
+        Message message = new Message();
+        message.setUser(new User().setLogin(login));
+        message.getTime();
+        message.setValue(msg);
         em.persist(message);
     }
 
