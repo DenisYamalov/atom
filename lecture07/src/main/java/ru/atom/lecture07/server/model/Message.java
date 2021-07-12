@@ -10,8 +10,8 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn (name = "login")
+    @ManyToOne (fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn (name = "login", nullable = false)
     private User user;
 
     @Column(name = "time", nullable = false)
@@ -24,9 +24,9 @@ public class Message {
         return user;
     }
 
-    public Message setUser(User user) {
+    public void setUser(User user) {
         this.user = user;
-        return this;
+        /*return this;*/
     }
 
     public Date getTime() {

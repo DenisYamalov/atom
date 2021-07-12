@@ -5,7 +5,6 @@ import org.jetbrains.annotations.Nullable;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.atom.lecture07.server.controller.ChatController;
 import ru.atom.lecture07.server.dao.MessageDao;
 import ru.atom.lecture07.server.dao.UserDao;
 import ru.atom.lecture07.server.model.Message;
@@ -21,6 +20,8 @@ public class ChatService {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
     private MessageDao messageDao;
 
     @Nullable
@@ -56,6 +57,8 @@ public class ChatService {
         return new ArrayList<>(messageDao.findAll());
     }
 
+    @NotNull
+    @Transactional
     public void say(@NotNull String login,@NotNull String msg){
         messageDao.save(login,msg);
         log.info("[" + login + "]:" + msg);

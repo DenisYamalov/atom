@@ -1,11 +1,7 @@
 package ru.atom.lecture07.server.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "user", schema = "chat")
@@ -34,6 +30,13 @@ public class User {
         this.login = login;
         return this;
     }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "message")
+    private Set<Message> messages;
+
+    public Set<Message> getMessages() {return messages;}
+
+    public void setMessages(Set<Message> messages) {this.messages = messages;}
 
     @Override
     public String toString() {
