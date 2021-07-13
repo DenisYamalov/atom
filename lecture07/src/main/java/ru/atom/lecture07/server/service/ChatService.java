@@ -34,7 +34,7 @@ public class ChatService {
     public void login(@NotNull String login) {
         User user = new User();
         userDao.save(user.setLogin(login));
- /*       messageDao.save(login,"logged in");*/
+/*        messageDao.save(login,"logged in")*/;
         log.info("[" + login + "] logged in");
     }
 
@@ -46,8 +46,8 @@ public class ChatService {
 
     @Transactional
     public void logout(@NotNull String login){
+/*        messageDao.save(login,"logged out");*/
         userDao.delete(login);
-        /*messageDao.save(login,"logged out");*/
         log.info("[" + login + "] logged out");
     }
 

@@ -1,5 +1,6 @@
 package ru.atom.lecture07.server.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.atom.lecture07.server.model.Message;
@@ -15,11 +16,15 @@ public class MessageDaoImpl implements MessageDao {
     @PersistenceContext
     private EntityManager em;
 
+    @Autowired
+    private UserDao userDao;
+
 
     @Override
     public void save(String login, String msg ) {
         Message message = new Message();
-        message.setUser(new User().setLogin(login));
+        User user = userDao.getByLogin(login);
+        message.setUser(user);
         message.getTime();
         message.setValue(msg);
         em.persist(message);

@@ -100,7 +100,7 @@ public class ChatController {
             return ResponseEntity.badRequest()
                     .body("Too short message");
         }
-        if (msg.length() > 200) {
+        if (msg.length() > 140) {
             return ResponseEntity.badRequest()
                     .body("Too long message");
         }
