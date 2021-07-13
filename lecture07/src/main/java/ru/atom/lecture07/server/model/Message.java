@@ -7,11 +7,12 @@ import java.util.Date;
 @Table(name = "message", schema = "chat")
 public class Message {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id",nullable = false,updatable = false)
     private Integer id;
 
-    @ManyToOne (fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn (name = "login", nullable = false)
+    @ManyToOne (fetch = FetchType.EAGER, cascade = {CascadeType.ALL},targetEntity = User.class)
+    @JoinColumn (name = "user_id")
     private User user;
 
     @Column(name = "time", nullable = false)

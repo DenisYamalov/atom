@@ -7,7 +7,8 @@ import java.util.Set;
 @Table(name = "user", schema = "chat")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "id",insertable = false,updatable = false)
     private Integer id;
 
     @Column(name = "login", unique = true, nullable = false, length = 20)
@@ -31,7 +32,7 @@ public class User {
         return this;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "message")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private Set<Message> messages;
 
     public Set<Message> getMessages() {return messages;}
