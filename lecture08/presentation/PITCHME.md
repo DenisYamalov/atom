@@ -30,7 +30,7 @@ Refresh gradle project
 ---
 
 ## Architecture overview
-<img src="lecture08/presentation/assets/img/Game-architecture.png" alt="exception" style="width: 750px;"/>  
+<img src="F:/Denis/Documents/GitHub/atom/lecture08/presentation/assets/img/Game-architecture.png" alt="exception" style="width: 750px;"/>  
 
 
 ---
@@ -60,11 +60,11 @@ exchange data in both directions
 
 ---
 ## OSI
-<img src="lecture08/presentation/assets/img/osi2.png" alt="exception" style="width: 750px;"/>  
+<img src="F:/Denis/Documents/GitHub/atom/lecture08/presentation/assets/img/osi2.png" alt="exception" style="width: 750px;"/>  
 
 ---
 ## WebSocket is application layer
-<img src="lecture08/presentation/assets/img/osi.png" alt="exception" style="width: 750px;"/>  
+<img src="F:/Denis/Documents/GitHub/atom/lecture08/presentation/assets/img/osi.png" alt="exception" style="width: 750px;"/>  
 
 ---
 ## WebSocket
@@ -78,7 +78,7 @@ Then no handshakes or headers required. **Only raw data**
 
 ---
 ## WebSocket
-<img src="lecture08/presentation/assets/img/websocket.png" alt="exception" style="width: 750px;"/>  
+<img src="F:/Denis/Documents/GitHub/atom/lecture08/presentation/assets/img/websocket.png" alt="exception" style="width: 750px;"/>  
 
 ---
 ## WebSocket library
