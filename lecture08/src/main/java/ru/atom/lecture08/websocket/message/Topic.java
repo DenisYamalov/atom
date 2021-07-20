@@ -5,6 +5,8 @@ package ru.atom.lecture08.websocket.message;
  */
 public enum Topic {
     HELLO,
+    history,
+    message,
     MOVE,
     PLANT_BOMB,
     REPLICA,

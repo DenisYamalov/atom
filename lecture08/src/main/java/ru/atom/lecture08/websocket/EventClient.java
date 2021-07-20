@@ -27,7 +27,6 @@ public class EventClient {
             // Send a message
             //session.sendMessage(new TextMessage("Hello"));
             session.sendMessage(new TextMessage(JsonHelper.toJson(new Message(Topic.HELLO,"Denis"))));
-            System.out.println("Hello");
             // Close session
             session.close();
 

@@ -3,11 +3,16 @@ package ru.atom.lecture08.websocket.network;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.stereotype.Component;
 import org.springframework.web.socket.WebSocketSession;
 import ru.atom.lecture08.websocket.message.Message;
 import ru.atom.lecture08.websocket.message.Topic;
 import ru.atom.lecture08.websocket.util.JsonHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
+/*@Component*/
 public class Broker {
     private static final Logger log = LogManager.getLogger(Broker.class);
 
@@ -25,11 +30,15 @@ public class Broker {
     public void receive(@NotNull WebSocketSession session, @NotNull String msg) {
         log.info("RECEIVED: " + msg);
         Message message = JsonHelper.fromJson(msg, Message.class);
+        List<Message> messages = new ArrayList<>();
+        messages.add(message);
+        connectionPool.broadcast(messages.toString());
+        // to sort by topic?
         //TODO TASK2 implement message processing
     }
 
     public void send(@NotNull String player, @NotNull Topic topic, @NotNull Object object) {
-        String message = JsonHelper.toJson(new Message(topic, JsonHelper.toJson(object)));
+        String message = JsonHelper.toJson(new Message(Topic.history, JsonHelper.toJson(object)));
         WebSocketSession session = connectionPool.getSession(player);
         connectionPool.send(session, message);
     }
